@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+.app {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: darkslategray;
+    font-family: 'Courier New', Courier;
+}
+
+.header {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 30px 0;
+    color: white;
+    z-index: 1;
+}
+
+.input {
+    display: flex;
+    width: 80%;
+    position: relative;
+    align-items: center;
+}
+
+.inputBox{
+    width: 100%;
+    font-size: 20px;
+    border-radius: 20px;
+    padding: 20px 30px;
+    border: none;
+}
+
+.inputBox:focus {
+    box-shadow: 0 0 100px 1000px rgba(0, 0, 0, 0.2);;
+    outline: none;
+}
+
+.submit{
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    border-radius: 10px;
+    border: none;
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+.submit:active {
+    transform: scale(0.8);
+}
+
+.list {
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+    flex-wrap: wrap;
+}
+
+.task-item {
+  display: flex;
+  width: 30%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: cadetblue;
+  border-radius: 10px;
+  margin-top: 15px;
+  margin-right: 10px;
+}
+
+.task-item.completed span {
+  text-decoration: line-through; 
+}
+
+.task-actions button {
+  margin-left: 8px;
+  padding: 10px;
+}
+
+.text {
+    flex:1;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.icon {
+    font-size: 25px;
+}
+
+.button {
+    background:none;
+    border: none;
+}
+
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+  
+body {
+    overflow-y: hidden;
+}

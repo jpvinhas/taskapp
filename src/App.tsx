@@ -1,12 +1,12 @@
 import React from 'react';
-import './App.css';
+import { StoreProvider } from 'easy-peasy';
+import store from './store/store';
+import TaskApp from './components/TaskApp';
 
-function App() {
-  return (
-    <div className="App">
-      Hello World
-    </div>
-  );
-}
+const App: React.FC = () => (
+  <StoreProvider store={store}>
+    <TaskApp />
+  </StoreProvider>
+);
 
 export default App;
