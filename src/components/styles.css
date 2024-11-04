@@ -72,6 +72,14 @@
   margin-right: 10px;
 }
 
+.task-input {
+    width: 70%;
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 10px 10px;
+    border: none;
+}
+
 .task-item.completed span {
   text-decoration: line-through; 
 }

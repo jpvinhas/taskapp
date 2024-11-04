@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useStoreActions } from '../store/hooks';
 import { Task } from '../store/model';
 
 import { FaRegEdit, FaRegTrashAlt} from "react-icons/fa";
 import { FaRegCircleCheck,FaCircleCheck  } from "react-icons/fa6";
+import { BsFillSendFill } from "react-icons/bs";
+
 
 
 interface TaskListItemProps {
@@ -13,15 +15,20 @@ interface TaskListItemProps {
 const TaskListItem: React.FC<TaskListItemProps> = ({ task }) => {
   const { deleteTask, updateTask } = useStoreActions((actions) => actions.tasksModel);
 
+  const [isEditing, setIsEditing ] = useState(false)
+  const [newTitle, setNewTitle ] = useState(task.title)
+
   const handleComplete = () => {
     updateTask({ ...task, done: !task.done });
   };
 
   const handleEdit = () => {
-    const newTitle = prompt("Editar tarefa:", task.title);
+    
     if (newTitle) {
       updateTask({ ...task, title: newTitle });
     }
+    
+    setIsEditing(!isEditing)
   };
 
   const handleDelete = () => {
@@ -30,7 +37,13 @@ const TaskListItem: React.FC<TaskListItemProps> = ({ task }) => {
 
   return (
     <div className={`task-item ${task.done ? 'completed' : ''}`}>
-      <span className='text'>{task.title}</span>
+      
+      {
+        isEditing
+        ? <input className='task-input' type = "text" value={newTitle} onChange = { (e) => setNewTitle(e.target.value)}></input>
+        :  <span className='text'>{task.title}</span>
+      }
+      
       <div className="task-actions">
         <button onClick={handleComplete} className='button'>
           {task.done 
@@ -38,9 +51,15 @@ const TaskListItem: React.FC<TaskListItemProps> = ({ task }) => {
           : <FaRegCircleCheck className='icon'/>
           }
         </button>
-        <button onClick={handleEdit} className='button'>
-            <FaRegEdit className='icon'/>
-        </button>
+        {
+          isEditing 
+          ? <button onClick={handleEdit} className='button'>
+              <BsFillSendFill className='icon'/>
+            </button>
+          : <button onClick={() => setIsEditing(!isEditing)} className='button'>
+              <FaRegEdit className='icon'/>
+            </button>
+        }
         <button onClick={handleDelete} className='button'>
             <FaRegTrashAlt className='icon'/>
         </button>
